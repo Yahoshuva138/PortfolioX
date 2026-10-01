@@ -3,6 +3,7 @@
 > **Class 11 — Builders Day Project**  
 > **Course:** Group C Web Development (Scaler School of Technology)  
 > **Design Theme:** Official, Clean & Professional Software Engineer Portfolio  
+> **Color Palette:** Royal Blue and Gold (A classic, majestic pairing)  
 > **Core Stack:** Semantic HTML5 + Modern CSS3 (CSS Flexbox & CSS Grid)  
 > **Bonus Challenge:** Tailwind CSS Edition (`tailwind.html`)  
 > **Student ID:** `26BCS10296`  

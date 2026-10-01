@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Personal portfolio of Yahoshuva, 1st Year B.Tech Computer Science & Applied AI student at Scaler School of Technology. Frontend development, projects, and coursework.">
+  <meta name="description" content="Personal portfolio of Yahoshuva, 1st Year B.Tech Computer Science & Applied AI student at Scaler School of Technology. Featuring a majestic Royal Blue and Gold theme.">
   <title>Yahoshuva — Portfolio | B.Tech CSE & Applied AI</title>
   
   <!-- Typography: Inter font -->
@@ -16,6 +16,7 @@
    PERSONAL PORTFOLIO STYLESHEET — YAHOSHUVA
    Scaler School of Technology • B.Tech CSE & Applied AI (2025–2029)
    Student ID: 26BCS10296
+   Palette: Royal Blue and Gold (A classic, majestic pairing)
    Stack: Semantic HTML5 + Modern CSS3 (Flexbox & CSS Grid)
    ========================================================================== */
 
@@ -23,30 +24,45 @@
    1. Design Tokens & CSS Custom Properties
    -------------------------------------------------------------------------- */
 :root {
-  /* Color Palette - Professional Dark Slate */
-  --bg-primary: #0b0f19;
-  --bg-secondary: #111827;
-  --bg-card: #172033;
-  --bg-card-hover: #1e293b;
-  --bg-input: #0f172a;
+  /* Color Palette - Royal Blue and Gold */
+  --bg-primary: #070c1a;       /* Deep Royal Midnight Navy */
+  --bg-secondary: #0d152e;     /* Rich Royal Navy */
+  --bg-card: #121c3b;          /* Deep Royal Blue Card Surface */
+  --bg-card-hover: #17244a;    /* Elevated Royal Blue Card */
+  --bg-input: #091024;         /* Inset Form Input Background */
   
-  --border-color: #243047;
-  --border-hover: #3b82f6;
-  --border-light: #1f293d;
+  --border-color: #1e2e56;     /* Subtle Royal Navy Border */
+  --border-hover: #d4af37;     /* Majestic Gold Hover Border */
+  --border-light: #162345;     /* Soft Division Line */
 
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  --text-primary: #fbfbfd;     /* Crisp Off-White */
+  --text-secondary: #a3b3d4;   /* Silvery-Blue Body Text */
+  --text-muted: #6f82a8;       /* Muted Navy-Blue Text */
 
-  --accent-primary: #3b82f6;
-  --accent-hover: #2563eb;
-  --accent-light: #60a5fa;
-  --accent-bg: rgba(59, 130, 246, 0.1);
-  --accent-bg-hover: rgba(59, 130, 246, 0.18);
+  /* Royal Blue Tokens */
+  --royal-primary: #1d4ed8;    /* Royal Blue Primary */
+  --royal-hover: #1e40af;      /* Royal Blue Dark Hover */
+  --royal-light: #3b82f6;      /* Bright Royal Accent */
+  --royal-bg: rgba(29, 78, 216, 0.16);
 
-  --badge-bg: #1e293b;
-  --badge-text: #93c5fd;
-  --badge-border: #334155;
+  /* Gold Tokens */
+  --gold-primary: #d4af37;     /* Classic Metallic Gold */
+  --gold-light: #f3cf65;       /* Warm Radiant Gold */
+  --gold-dark: #b89327;        /* Deep Antique Gold */
+  --gold-bg: rgba(212, 175, 55, 0.12);
+  --gold-bg-hover: rgba(212, 175, 55, 0.22);
+  --gold-border: rgba(212, 175, 55, 0.32);
+
+  /* Semantic Aliases for Components */
+  --accent-primary: #1d4ed8;
+  --accent-hover: #1e40af;
+  --accent-light: #f3cf65;     /* Gold for highlighted text */
+  --accent-bg: rgba(212, 175, 55, 0.12);
+  --accent-bg-hover: rgba(212, 175, 55, 0.2);
+
+  --badge-bg: #0d152e;
+  --badge-text: #f3cf65;       /* Gold badge text */
+  --badge-border: rgba(212, 175, 55, 0.35);
 
   --success-color: #10b981;
   --success-bg: rgba(16, 185, 129, 0.12);
@@ -63,10 +79,11 @@
   --radius-lg: 14px;
   --radius-full: 9999px;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  /* Shadows with Royal & Gold Tones */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 14px rgba(7, 12, 26, 0.6);
+  --shadow-lg: 0 12px 28px -6px rgba(0, 0, 0, 0.7);
+  --shadow-gold: 0 4px 20px rgba(212, 175, 55, 0.22);
 
   /* Transitions */
   --transition: all 0.2s ease-in-out;
@@ -146,12 +163,12 @@ button, input, textarea, select {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--accent-light);
-  background: var(--accent-bg);
-  padding: 4px 12px;
+  color: var(--gold-light);
+  background: var(--gold-bg);
+  padding: 4px 14px;
   border-radius: var(--radius-full);
-  margin-bottom: 12px;
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  margin-bottom: 14px;
+  border: 1px solid var(--gold-border);
 }
 
 .section-title {
@@ -170,16 +187,16 @@ button, input, textarea, select {
 }
 
 /* --------------------------------------------------------------------------
-   3. Navigation Bar (Sticky, Clean Backdrop)
+   3. Navigation Bar (Sticky, Royal Frosted Glass)
    -------------------------------------------------------------------------- */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 1000;
   height: var(--header-height);
-  background: rgba(11, 15, 25, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(7, 12, 26, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border-light);
   display: flex;
   align-items: center;
@@ -199,7 +216,7 @@ button, input, textarea, select {
 }
 
 .brand-name {
-  font-size: 1.1875rem;
+  font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--text-primary);
@@ -208,11 +225,11 @@ button, input, textarea, select {
 .brand-badge {
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--accent-light);
-  background: var(--accent-bg);
-  padding: 2px 8px;
+  color: var(--gold-light);
+  background: var(--gold-bg);
+  padding: 2px 9px;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  border: 1px solid var(--gold-border);
 }
 
 .nav-menu {
@@ -230,7 +247,7 @@ button, input, textarea, select {
 }
 
 .nav-link:hover {
-  color: var(--text-primary);
+  color: var(--gold-light);
 }
 
 .nav-link::after {
@@ -240,7 +257,7 @@ button, input, textarea, select {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: var(--accent-primary);
+  background-color: var(--gold-primary);
   transition: width 0.2s ease;
 }
 
@@ -255,13 +272,16 @@ button, input, textarea, select {
   font-size: 0.875rem;
   font-weight: 600;
   color: #ffffff;
-  background-color: var(--accent-primary);
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+  border: 1px solid var(--gold-border);
   border-radius: var(--radius-sm);
   transition: var(--transition);
+  box-shadow: 0 2px 10px rgba(29, 78, 216, 0.35);
 }
 
 .nav-cta:hover {
-  background-color: var(--accent-hover);
+  border-color: var(--gold-primary);
+  box-shadow: var(--shadow-gold);
   transform: translateY(-1px);
 }
 
@@ -277,7 +297,7 @@ button, input, textarea, select {
 }
 
 /* --------------------------------------------------------------------------
-   4. Buttons & Badges
+   4. Buttons & Badges (Royal Blue & Gold Styling)
    -------------------------------------------------------------------------- */
 .btn {
   display: inline-flex;
@@ -294,14 +314,15 @@ button, input, textarea, select {
 }
 
 .btn-primary {
-  background-color: var(--accent-primary);
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
   color: #ffffff;
+  border: 1px solid var(--gold-border);
 }
 
 .btn-primary:hover {
-  background-color: var(--accent-hover);
+  border-color: var(--gold-primary);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+  box-shadow: var(--shadow-gold);
 }
 
 .btn-secondary {
@@ -312,7 +333,8 @@ button, input, textarea, select {
 
 .btn-secondary:hover {
   background-color: var(--bg-card-hover);
-  border-color: var(--border-hover);
+  border-color: var(--gold-primary);
+  color: var(--gold-light);
   transform: translateY(-2px);
 }
 
@@ -323,9 +345,9 @@ button, input, textarea, select {
 }
 
 .btn-outline:hover {
-  color: var(--text-primary);
-  border-color: var(--text-secondary);
-  background-color: rgba(255, 255, 255, 0.04);
+  color: var(--gold-light);
+  border-color: var(--gold-border);
+  background-color: var(--gold-bg);
 }
 
 .btn-sm {
@@ -339,6 +361,7 @@ button, input, textarea, select {
 .hero-section {
   padding-top: 100px;
   padding-bottom: 100px;
+  background: radial-gradient(circle at 85% 20%, rgba(29, 78, 216, 0.12) 0%, transparent 60%);
 }
 
 .hero-grid {
@@ -360,7 +383,7 @@ button, input, textarea, select {
   align-self: flex-start;
   padding: 6px 14px;
   background-color: var(--success-bg);
-  border: 1px solid rgba(16, 185, 129, 0.25);
+  border: 1px solid rgba(16, 185, 129, 0.3);
   border-radius: var(--radius-full);
   font-size: 0.8125rem;
   font-weight: 500;
@@ -403,7 +426,7 @@ button, input, textarea, select {
 .hero-role {
   font-size: 1.375rem;
   font-weight: 600;
-  color: var(--accent-light);
+  color: var(--gold-light);
   margin-bottom: 20px;
 }
 
@@ -458,7 +481,8 @@ button, input, textarea, select {
 }
 
 .profile-card:hover {
-  border-color: var(--border-hover);
+  border-color: var(--gold-primary);
+  box-shadow: var(--shadow-gold);
   transform: translateY(-4px);
 }
 
@@ -538,12 +562,13 @@ button, input, textarea, select {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   padding: 28px;
+  box-shadow: var(--shadow-md);
 }
 
 .about-card-title {
   font-size: 1.125rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--gold-light);
   margin-bottom: 20px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--border-color);
@@ -595,9 +620,9 @@ button, input, textarea, select {
 }
 
 .skill-category-card:hover {
-  border-color: var(--border-hover);
+  border-color: var(--gold-primary);
   transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-gold);
 }
 
 .skill-category-header {
@@ -609,7 +634,7 @@ button, input, textarea, select {
 
 .skill-icon {
   font-size: 1.375rem;
-  color: var(--accent-light);
+  color: var(--gold-light);
 }
 
 .skill-category-title {
@@ -637,8 +662,8 @@ button, input, textarea, select {
 }
 
 .skill-category-card:hover .skill-tag {
-  border-color: var(--border-light);
-  color: var(--text-primary);
+  border-color: var(--gold-border);
+  color: var(--gold-light);
 }
 
 /* --------------------------------------------------------------------------
@@ -661,9 +686,9 @@ button, input, textarea, select {
 }
 
 .project-card:hover {
-  border-color: var(--border-hover);
+  border-color: var(--gold-primary);
   transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-gold);
 }
 
 .project-thumb {
@@ -717,9 +742,9 @@ button, input, textarea, select {
 .project-tag {
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--badge-text);
-  background-color: var(--badge-bg);
-  border: 1px solid var(--badge-border);
+  color: var(--gold-light);
+  background-color: var(--gold-bg);
+  border: 1px solid var(--gold-border);
   padding: 3px 8px;
   border-radius: var(--radius-sm);
 }
@@ -751,9 +776,9 @@ button, input, textarea, select {
 }
 
 .assignment-card:hover {
-  border-color: var(--border-hover);
+  border-color: var(--gold-primary);
   transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-gold);
 }
 
 .assignment-top-meta {
@@ -768,11 +793,11 @@ button, input, textarea, select {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--accent-light);
-  background: var(--accent-bg);
+  color: var(--gold-light);
+  background: var(--gold-bg);
   padding: 3px 10px;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  border: 1px solid var(--gold-border);
 }
 
 .assignment-status {
@@ -816,8 +841,8 @@ button, input, textarea, select {
 
 .assignment-highlight-item::before {
   content: "•";
-  color: var(--accent-primary);
-  font-size: 1rem;
+  color: var(--gold-primary);
+  font-size: 1.1rem;
 }
 
 .assignment-tags {
@@ -881,7 +906,7 @@ button, input, textarea, select {
 }
 
 .timeline-card:hover {
-  border-color: var(--border-hover);
+  border-color: var(--gold-primary);
   transform: translateX(4px);
 }
 
@@ -892,9 +917,9 @@ button, input, textarea, select {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background-color: var(--accent-primary);
+  background-color: var(--gold-primary);
   border: 3px solid var(--bg-primary);
-  box-shadow: 0 0 0 2px var(--accent-primary);
+  box-shadow: 0 0 0 2px var(--gold-primary);
 }
 
 .timeline-header {
@@ -914,16 +939,16 @@ button, input, textarea, select {
 .timeline-institution {
   font-size: 0.9375rem;
   font-weight: 500;
-  color: var(--accent-light);
+  color: var(--royal-light);
   margin-top: 2px;
 }
 
 .timeline-badge {
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--text-muted);
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-color);
+  color: var(--gold-light);
+  background-color: var(--gold-bg);
+  border: 1px solid var(--gold-border);
   padding: 4px 10px;
   border-radius: var(--radius-full);
   white-space: nowrap;
@@ -993,7 +1018,7 @@ button, input, textarea, select {
 }
 
 .channel-card:hover {
-  border-color: var(--border-hover);
+  border-color: var(--gold-primary);
   transform: translateX(4px);
 }
 
@@ -1007,6 +1032,7 @@ button, input, textarea, select {
   background-color: var(--bg-secondary);
   border-radius: var(--radius-sm);
   border: 1px solid var(--border-light);
+  color: var(--gold-light);
 }
 
 .channel-details {
@@ -1035,6 +1061,7 @@ button, input, textarea, select {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   padding: 36px;
+  box-shadow: var(--shadow-md);
 }
 
 .contact-form {
@@ -1078,8 +1105,8 @@ button, input, textarea, select {
 
 .form-control:focus {
   outline: none;
-  border-color: var(--accent-primary);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
 }
 
 textarea.form-control {
@@ -1129,7 +1156,7 @@ textarea.form-control {
 }
 
 .footer-nav a:hover {
-  color: var(--text-primary);
+  color: var(--gold-light);
 }
 
 .footer-bottom {
@@ -1238,7 +1265,7 @@ textarea.form-control {
 <body id="top">
 
   <!-- ====================================================================
-       1. Navigation Bar (Sticky, Semantic)
+       1. Navigation Bar (Sticky, Royal Frosted Glass)
        ==================================================================== -->
   <header class="site-header">
     <div class="container">
@@ -1264,7 +1291,7 @@ textarea.form-control {
 
   <main>
     <!-- ====================================================================
-         2. Hero Section
+         2. Hero Section (Royal Blue & Gold Accents)
          ==================================================================== -->
     <section class="section hero-section" id="hero">
       <div class="container">
@@ -1333,7 +1360,7 @@ textarea.form-control {
                 </div>
                 <div class="profile-detail">
                   <span>Student ID</span>
-                  <span>26BCS10296</span>
+                  <span style="color: var(--gold-light);">26BCS10296</span>
                 </div>
                 <div class="profile-detail">
                   <span>Institution</span>
@@ -1390,7 +1417,7 @@ textarea.form-control {
               </div>
               <div class="about-info-row">
                 <span class="about-info-label">Student ID</span>
-                <span class="about-info-val">26BCS10296</span>
+                <span class="about-info-val" style="color: var(--gold-light); font-weight: 600;">26BCS10296</span>
               </div>
               <div class="about-info-row">
                 <span class="about-info-label">Degree</span>
@@ -1410,7 +1437,7 @@ textarea.form-control {
               </div>
               <div class="about-info-row">
                 <span class="about-info-label">GitHub</span>
-                <span class="about-info-val"><a href="https://github.com/Yahoshuva138" target="_blank" rel="noopener noreferrer" style="color: var(--accent-light);">github.com/Yahoshuva138 ↗</a></span>
+                <span class="about-info-val"><a href="https://github.com/Yahoshuva138" target="_blank" rel="noopener noreferrer" style="color: var(--gold-light);">github.com/Yahoshuva138 ↗</a></span>
               </div>
             </div>
           </div>
@@ -1692,7 +1719,7 @@ textarea.form-control {
             <h3 class="assignment-title">Flexbox Quest Interactive Arena</h3>
             
             <p class="assignment-desc">
-              An interactive 2D web page built to demonstrate the CSS display model differences (<code style="color: var(--accent-light);">block</code>, <code style="color: var(--accent-light);">inline</code>, <code style="color: var(--accent-light);">inline-block</code>, and <code style="color: var(--accent-light);">flex</code>). Includes directional controls, inventory grid, and quest progress tracking.
+              An interactive 2D web page built to demonstrate the CSS display model differences (<code style="color: var(--gold-light);">block</code>, <code style="color: var(--gold-light);">inline</code>, <code style="color: var(--gold-light);">inline-block</code>, and <code style="color: var(--gold-light);">flex</code>). Includes directional controls, inventory grid, and quest progress tracking.
             </p>
 
             <ul class="assignment-highlights">
@@ -1753,7 +1780,7 @@ textarea.form-control {
               and Mathematics for Programming.
             </p>
             <div class="timeline-skills">
-              <span class="tag" style="border-color: var(--accent-primary); color: var(--accent-light);">Student ID: 26BCS10296</span>
+              <span class="tag" style="border-color: var(--gold-primary); color: var(--gold-light); background: var(--gold-bg);">Student ID: 26BCS10296</span>
               <span class="tag">DSA in Java</span>
               <span class="tag">Web Development 101</span>
               <span class="tag">Maths for Programming</span>
@@ -1954,8 +1981,8 @@ textarea.form-control {
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 Kesaboyina Yahoshuva. Built with semantic HTML5 and clean CSS3.</p>
-        <a href="#top" style="color: var(--accent-light); font-weight: 500;">Back to top &uarr;</a>
+        <p>&copy; 2026 Kesaboyina Yahoshuva. Built with semantic HTML5 and clean CSS3 (Royal Blue &amp; Gold Edition).</p>
+        <a href="#top" style="color: var(--gold-light); font-weight: 500;">Back to top &uarr;</a>
       </div>
     </div>
   </footer>
