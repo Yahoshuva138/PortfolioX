@@ -1735,6 +1735,141 @@ button, input, textarea {
 }
 
 /* --------------------------------------------------------------------------
+   10B. WEBDEV 101 COURSEWORK & ASSIGNMENTS GAUNTLET
+   -------------------------------------------------------------------------- */
+.assignments-section {
+  position: relative;
+  background: radial-gradient(circle at 80% 30%, rgba(255, 0, 85, 0.05) 0%, transparent 60%);
+}
+
+.assignments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
+  gap: 2rem;
+}
+
+.assignment-card {
+  background: var(--bg-surface-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.assignment-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta));
+  opacity: 0.8;
+}
+
+.assignment-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.25);
+}
+
+.assignment-top-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.assignment-badge {
+  font-family: var(--font-arcade);
+  font-size: 0.62rem;
+  color: var(--neon-green);
+  border: 1px solid var(--neon-green);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  background: rgba(0, 255, 157, 0.06);
+  letter-spacing: 0.5px;
+}
+
+.assignment-status {
+  font-family: var(--font-arcade);
+  font-size: 0.58rem;
+  color: var(--neon-gold);
+}
+
+.assignment-title {
+  font-family: var(--font-hud);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.assignment-desc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+
+.assignment-highlights {
+  list-style: none;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.assignment-highlight-item {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.assignment-highlight-item::before {
+  content: '▸';
+  color: var(--neon-cyan);
+  font-weight: 700;
+}
+
+.assignment-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 1.5rem;
+}
+
+.assignment-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--neon-cyan);
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  padding: 0.25rem 0.55rem;
+  border-radius: 4px;
+}
+
+.assignment-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: auto;
+}
+
+/* --------------------------------------------------------------------------
    11. CAMPAIGN HISTORY (EDUCATION & EXPERIENCE TIMELINE)
    -------------------------------------------------------------------------- */
 .experience-section {
@@ -2229,6 +2364,10 @@ textarea.form-control {
     grid-template-columns: 1fr;
   }
 
+  .assignments-grid {
+    grid-template-columns: 1fr;
+  }
+
   .form-row {
     grid-template-columns: 1fr;
   }
@@ -2373,8 +2512,9 @@ textarea.form-control {
         <li class="nav-item"><a href="#skills" class="nav-link"><span class="nav-num">02.</span> Skill Tree</a></li>
         <li class="nav-item"><a href="#arcade" class="nav-link"><span class="nav-num">03.</span> 🕹️ Arcade</a></li>
         <li class="nav-item"><a href="#projects" class="nav-link"><span class="nav-num">04.</span> Quests</a></li>
-        <li class="nav-item"><a href="#experience" class="nav-link"><span class="nav-num">05.</span> Campaign</a></li>
-        <li class="nav-item"><a href="#contact" class="nav-link"><span class="nav-num">06.</span> Co-op Contact</a></li>
+        <li class="nav-item"><a href="#assignments" class="nav-link"><span class="nav-num">05.</span> 📝 Assignments</a></li>
+        <li class="nav-item"><a href="#experience" class="nav-link"><span class="nav-num">06.</span> Campaign</a></li>
+        <li class="nav-item"><a href="#contact" class="nav-link"><span class="nav-num">07.</span> Contact</a></li>
         <!-- Bonus Tailwind Edition Link -->
         <li class="nav-item">
           <a href="tailwind.html" class="nav-badge-link" title="View Tailwind CSS Version (Bonus Point)">
@@ -3168,6 +3308,103 @@ textarea.form-control {
     </section>
 
     <!-- ========================================================
+         SECTION 5: WEBDEV 101 COURSEWORK & ASSIGNMENTS GAUNTLET
+         Concepts: Working hyperlinks to assignment pages,
+         academic coursework showcase, semantic forms, tables, flexbox.
+         ======================================================== -->
+    <section class="section assignments-section" id="assignments">
+      <div class="container">
+        
+        <div class="section-header">
+          <span class="section-tag">05 // COURSEWORK GAUNTLET</span>
+          <h2 class="section-title">WebDev 101 Assignments</h2>
+          <p class="section-subtitle">
+            Hands-on lab coursework, display model experiments, and interactive web pages built during Group C Web Development at Scaler School of Technology.
+          </p>
+        </div>
+
+        <div class="assignments-grid">
+
+          <!-- Assignment 01 Card -->
+          <article class="assignment-card">
+            <div class="assignment-top-meta">
+              <span class="assignment-badge">ASSIGNMENT 01 // WEBDEV 101</span>
+              <span class="assignment-status">★ GRADE: COMPLETED</span>
+            </div>
+            
+            <h3 class="assignment-title">Interactive Student Portal &amp; Registration</h3>
+            
+            <p class="assignment-desc">
+              Comprehensive student academic dashboard demonstrating semantic HTML5 architecture, profile data presentation, weekly course schedule tables, and a full course registration form with inputs, dropdowns, radio controls, and checkboxes.
+            </p>
+
+            <ul class="assignment-highlights">
+              <li class="assignment-highlight-item">Semantic table structure with headers, data cells, and schedules</li>
+              <li class="assignment-highlight-item">Full course registration form with validation and multiple input types</li>
+              <li class="assignment-highlight-item">Personal student bio: Yahoshuva (B.Tech CSE &amp; Applied AI, Scaler)</li>
+            </ul>
+
+            <div class="assignment-tags">
+              <span class="assignment-tag">Semantic HTML5</span>
+              <span class="assignment-tag">HTML Tables</span>
+              <span class="assignment-tag">Form Validation</span>
+              <span class="assignment-tag">CSS Styling</span>
+            </div>
+
+            <div class="assignment-actions">
+              <a href="webdev101_assignments/assignment_01_student_portal/student-portal.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                <span>▶ OPEN STUDENT PORTAL</span>
+                <span class="btn-arrow">&rarr;</span>
+              </a>
+              <a href="webdev101_assignments/assignment_01_student_portal/student-portal.html" class="btn btn-secondary btn-sm" target="_blank" rel="noopener noreferrer">
+                <span>VIEW LIVE DEMO ↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Assignment 02 Card -->
+          <article class="assignment-card">
+            <div class="assignment-top-meta">
+              <span class="assignment-badge">ASSIGNMENT 02 // FLEXBOX QUEST</span>
+              <span class="assignment-status">★ GRADE: COMPLETED</span>
+            </div>
+            
+            <h3 class="assignment-title">Flexbox Quest: 2D Game Arena &amp; HUD</h3>
+            
+            <p class="assignment-desc">
+              Gamified CSS layout experiment implementing display flow models (block, inline, inline-block, flex), an interactive platformer game arena, directional controller D-pad, 6-slot inventory panel, and live quest tracker.
+            </p>
+
+            <ul class="assignment-highlights">
+              <li class="assignment-highlight-item">CSS display model experiments with visual observations</li>
+              <li class="assignment-highlight-item">2D retro game arena with floating platforms and star collectibles</li>
+              <li class="assignment-highlight-item">Interactive gaming panels: D-Pad controls, Inventory, and Quest tracker</li>
+            </ul>
+
+            <div class="assignment-tags">
+              <span class="assignment-tag">CSS Flexbox 1D</span>
+              <span class="assignment-tag">Display Models</span>
+              <span class="assignment-tag">Box Model Geometry</span>
+              <span class="assignment-tag">Game HUD Layout</span>
+            </div>
+
+            <div class="assignment-actions">
+              <a href="webdev101_assignments/assignment_02_flexbox_quest/index.html" target="_blank" rel="noopener noreferrer" class="btn btn-arcade btn-sm">
+                <span>▶ PLAY FLEXBOX QUEST</span>
+                <span class="btn-arrow">&rarr;</span>
+              </a>
+              <a href="webdev101_assignments/assignment_02_flexbox_quest/index.html" class="btn btn-secondary btn-sm" target="_blank" rel="noopener noreferrer">
+                <span>VIEW LIVE DEMO ↗</span>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
          SECTION 6: CAMPAIGN LOGS (EDUCATION & EXPERIENCE)
          Concepts: Vertical Timeline with Glowing Checkpoint Nodes,
          Guild Affiliations, Coursework Milestones.
@@ -3176,7 +3413,7 @@ textarea.form-control {
       <div class="container">
         
         <div class="section-header">
-          <span class="section-tag">04 // CAMPAIGN HISTORY</span>
+          <span class="section-tag">06 // CAMPAIGN HISTORY</span>
           <h2 class="section-title">Education &amp; Guild Activities</h2>
           <p class="section-subtitle">Academic training grounds, leadership guilds, and continuous milestones.</p>
         </div>
@@ -3271,7 +3508,7 @@ textarea.form-control {
       <div class="container">
         
         <div class="section-header">
-          <span class="section-tag">05 // SUMMON STATION</span>
+          <span class="section-tag">07 // SUMMON STATION</span>
           <h2 class="section-title">Initiate Co-op Quest</h2>
           <p class="section-subtitle">Have a project, summer internship opening, or want to collaborate? Send a transmission!</p>
         </div>

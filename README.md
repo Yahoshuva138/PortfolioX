@@ -81,6 +81,21 @@
 
 ---
 
+## 📝 Coursework & WebDev 101 Assignments
+
+The portfolio features a dedicated **Coursework Gauntlet** (`#assignments`) with working hyperlinks to Yahoshuva's Scaler School of Technology lab assignments:
+
+### 1. Assignment 01 — Interactive Student Portal & Registration Engine
+- **Live Assignment Path:** [`webdev101_assignments/assignment_01_student_portal/student-portal.html`](webdev101_assignments/assignment_01_student_portal/student-portal.html)
+- **Topics & Skills:** Semantic HTML5 structure, academic tables with row/column spans, weekly course timetable schedules, complete course registration form with inputs, dropdown menus, radio selectors, checkboxes, and CSS styling.
+- **Student Profile:** Yahoshuva (B.Tech Computer Science & Applied AI, Scaler).
+
+### 2. Assignment 02 — Flexbox Quest 2D Game Arena & HUD
+- **Live Assignment Path:** [`webdev101_assignments/assignment_02_flexbox_quest/index.html`](webdev101_assignments/assignment_02_flexbox_quest/index.html)
+- **Topics & Skills:** CSS Display model experiments (`block`, `inline`, `inline-block`, `flex`), retro platformer game arena with floating star collectibles, direction pad controller, 6-item inventory grid, and real-time quest progress tracker.
+
+---
+
 ## 🕹️ Interactive Feature: Cyber Arcade Mini-Game ("Bug Hunter 2026")
 
 Directly embedded in both `index.html` and `tailwind.html` is an interactive **3x3 Terminal Grid Arcade Game**:
@@ -111,6 +126,13 @@ PORTFOLIOX/
 ├── style.css                  # Production-grade CSS stylesheet with gaming design tokens & arcade styles
 ├── tailwind.html              # Bonus Edition (100% Tailwind CSS Utility Classes + Bug Hunter Game)
 │
+├── webdev101_assignments/     # 📚 Coursework & Class Assignments
+│   ├── assignment_01_student_portal/
+│   │   └── student-portal.html    # Assignment 1: Student Portal & Registration
+│   └── assignment_02_flexbox_quest/
+│       ├── index.html             # Assignment 2: Flexbox Quest 2D Game Arena
+│       └── style.css              # Flexbox Quest custom stylesheet
+│
 ├── images/                    # Verified visual assets (also embedded as base64 in index.html)
 │   ├── yahoshuva.png          # Real portrait photograph of Yahoshuva
 │   ├── project-1.png          # Smart Document Assistant high-res UI preview
@@ -118,6 +140,7 @@ PORTFOLIOX/
 │   ├── project-3.png          # Interactive Quiz Engine UI preview
 │   └── gaming-bg.jpg          # 8-bit retro cyberpunk city wallpaper
 │
+├── DUAL/                      # Dual-edition folder (index.html & tailwind.html)
 ├── create_project_mockups.py  # Automation script for UI preview assets
 └── README.md                  # Complete documentation and TA Viva Defense Guide
 ```
