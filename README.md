@@ -23,6 +23,7 @@
 
 **Player 01: Yahoshuva** is an undergraduate student pursuing a B.Tech in **Computer Science & Applied Artificial Intelligence** at **Scaler School of Technology (SST)** in Bengaluru, Karnataka.
 
+- **Student ID:** `26BCS10296`
 - **Class:** Frontend Developer & Creative Technologist
 - **Current Server:** Scaler School of Technology, Bengaluru
 - **HP (Clean Code):** `100 / 100`
@@ -88,7 +89,7 @@ The portfolio features a dedicated **Coursework Gauntlet** (`#assignments`) with
 ### 1. Assignment 01 — Interactive Student Portal & Registration Engine
 - **Live Assignment Path:** [`webdev101_assignments/assignment_01_student_portal/student-portal.html`](webdev101_assignments/assignment_01_student_portal/student-portal.html)
 - **Topics & Skills:** Semantic HTML5 structure, academic tables with row/column spans, weekly course timetable schedules, complete course registration form with inputs, dropdown menus, radio selectors, checkboxes, and CSS styling.
-- **Student Profile:** Yahoshuva (B.Tech Computer Science & Applied AI, Scaler).
+- **Student Profile:** Yahoshuva • **Student ID:** `26BCS10296` (B.Tech Computer Science & Applied AI, Scaler).
 
 ### 2. Assignment 02 — Flexbox Quest 2D Game Arena & HUD
 - **Live Assignment Path:** [`webdev101_assignments/assignment_02_flexbox_quest/index.html`](webdev101_assignments/assignment_02_flexbox_quest/index.html)
