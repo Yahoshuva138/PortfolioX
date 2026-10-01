@@ -3,7 +3,7 @@
 > **Class 11 — Builders Day Project**  
 > **Course:** Group C Web Development (Scaler School of Technology)  
 > **Design Theme:** Official, Clean & Professional Software Engineer Portfolio  
-> **Color Palette:** Royal Blue and Gold (A classic, majestic pairing)  
+> **Color Palette:** White-Blue Color Palette (Crisp, Modern & Professional — inspired by Coolors reference)  
 > **Core Stack:** Semantic HTML5 + Modern CSS3 (CSS Flexbox & CSS Grid)  
 > **Bonus Challenge:** Tailwind CSS Edition (`tailwind.html`)  
 > **Student ID:** `26BCS10296`  
@@ -189,7 +189,7 @@ The contact section includes integration with **EmailJS** (`@emailjs/browser` v4
 ## 🏆 Checklist for Submission
 
 - [x] Clean, official, and professional developer presentation (no gimmicks)
-- [x] Royal Blue & Gold majestic color palette applied
+- [x] White-Blue crisp, modern, and professional color palette applied (inspired by Coolors)
 - [x] EmailJS client-side transmission with fallback implemented
 - [x] Authentic student bio with Student ID: `26BCS10296`
 - [x] Official contact email: `kesaboyinayahoshuva@gmail.com`

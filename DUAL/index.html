@@ -3,69 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Personal portfolio of Yahoshuva, 1st Year B.Tech Computer Science & Applied AI student at Scaler School of Technology. Featuring a majestic Royal Blue and Gold theme.">
+  <meta name="description" content="Personal portfolio of Yahoshuva, 1st Year B.Tech Computer Science & Applied AI student at Scaler School of Technology. Clean White-Blue design inspired by Coolors.">
   <title>Yahoshuva — Portfolio | B.Tech CSE & Applied AI</title>
   
   <!-- Typography: Inter font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   
   <style>
 /* ==========================================================================
    PERSONAL PORTFOLIO STYLESHEET — YAHOSHUVA
    Scaler School of Technology • B.Tech CSE & Applied AI (2025–2029)
    Student ID: 26BCS10296
-   Palette: Royal Blue and Gold (A classic, majestic pairing)
+   Palette: White-Blue Color Palette (Crisp, Modern, Professional)
    Stack: Semantic HTML5 + Modern CSS3 (Flexbox & CSS Grid)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. Design Tokens & CSS Custom Properties
+   1. Design Tokens & CSS Custom Properties (White-Blue Palette)
    -------------------------------------------------------------------------- */
 :root {
-  /* Color Palette - Royal Blue and Gold */
-  --bg-primary: #070c1a;       /* Deep Royal Midnight Navy */
-  --bg-secondary: #0d152e;     /* Rich Royal Navy */
-  --bg-card: #121c3b;          /* Deep Royal Blue Card Surface */
-  --bg-card-hover: #17244a;    /* Elevated Royal Blue Card */
-  --bg-input: #091024;         /* Inset Form Input Background */
-  
-  --border-color: #1e2e56;     /* Subtle Royal Navy Border */
-  --border-hover: #d4af37;     /* Majestic Gold Hover Border */
-  --border-light: #162345;     /* Soft Division Line */
+  /* White-Blue Core Surfaces */
+  --bg-primary: #ffffff;          /* Pure White */
+  --bg-secondary: #f8fafc;        /* Soft Slate Light (slate-50) */
+  --bg-card: #ffffff;             /* Crisp White Card */
+  --bg-card-hover: #f1f5f9;       /* Light Hover Slate (slate-100) */
+  --bg-input: #ffffff;            /* Form Input Canvas */
 
-  --text-primary: #fbfbfd;     /* Crisp Off-White */
-  --text-secondary: #a3b3d4;   /* Silvery-Blue Body Text */
-  --text-muted: #6f82a8;       /* Muted Navy-Blue Text */
+  /* Borders & Dividers */
+  --border-color: #e2e8f0;        /* Subtle Border (slate-200) */
+  --border-hover: #0066ff;        /* Vibrant Tech Blue Border */
+  --border-light: #f1f5f9;        /* Soft Divider (slate-100) */
 
-  /* Royal Blue Tokens */
-  --royal-primary: #1d4ed8;    /* Royal Blue Primary */
-  --royal-hover: #1e40af;      /* Royal Blue Dark Hover */
-  --royal-light: #3b82f6;      /* Bright Royal Accent */
-  --royal-bg: rgba(29, 78, 216, 0.16);
+  /* Text Hierarchy (High Contrast, Readable) */
+  --text-primary: #0f172a;        /* Deep Slate Black (slate-900) */
+  --text-secondary: #475569;      /* Refined Slate Body (slate-600) */
+  --text-muted: #64748b;          /* Muted Caption Slate (slate-500) */
 
-  /* Gold Tokens */
-  --gold-primary: #d4af37;     /* Classic Metallic Gold */
-  --gold-light: #f3cf65;       /* Warm Radiant Gold */
-  --gold-dark: #b89327;        /* Deep Antique Gold */
-  --gold-bg: rgba(212, 175, 55, 0.12);
-  --gold-bg-hover: rgba(212, 175, 55, 0.22);
-  --gold-border: rgba(212, 175, 55, 0.32);
+  /* Tech Blue Primary Tokens (Coolors Reference) */
+  --blue-primary: #0066ff;        /* Vibrant Royal / Electric Blue */
+  --blue-hover: #0052cc;          /* Deep Blue Hover */
+  --blue-light: #2563eb;          /* Medium Blue Accent */
+  --blue-soft: #3b82f6;           /* Bright Blue Accent */
+  --blue-bg: #eff6ff;             /* Pale Ice Blue (blue-50) */
+  --blue-bg-hover: #dbeafe;       /* Soft Ice Blue Hover (blue-100) */
+  --blue-border: #bfdbfe;         /* Ice Blue Border (blue-200) */
 
   /* Semantic Aliases for Components */
-  --accent-primary: #1d4ed8;
-  --accent-hover: #1e40af;
-  --accent-light: #f3cf65;     /* Gold for highlighted text */
-  --accent-bg: rgba(212, 175, 55, 0.12);
-  --accent-bg-hover: rgba(212, 175, 55, 0.2);
+  --accent-primary: #0066ff;
+  --accent-hover: #0052cc;
+  --accent-light: #0066ff;
+  --accent-bg: #eff6ff;
+  --accent-bg-hover: #dbeafe;
 
-  --badge-bg: #0d152e;
-  --badge-text: #f3cf65;       /* Gold badge text */
-  --badge-border: rgba(212, 175, 55, 0.35);
+  --badge-bg: #eff6ff;
+  --badge-text: #0052cc;
+  --badge-border: #bfdbfe;
 
-  --success-color: #10b981;
-  --success-bg: rgba(16, 185, 129, 0.12);
+  --success-color: #059669;
+  --success-bg: #ecfdf5;
+  --success-border: #a7f3d0;
 
   /* Typography */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -79,11 +77,11 @@
   --radius-lg: 14px;
   --radius-full: 9999px;
 
-  /* Shadows with Royal & Gold Tones */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 4px 14px rgba(7, 12, 26, 0.6);
-  --shadow-lg: 0 12px 28px -6px rgba(0, 0, 0, 0.7);
-  --shadow-gold: 0 4px 20px rgba(212, 175, 55, 0.22);
+  /* Crisp Light Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 10px 25px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+  --shadow-blue: 0 4px 14px rgba(0, 102, 255, 0.22);
 
   /* Transitions */
   --transition: all 0.2s ease-in-out;
@@ -148,7 +146,11 @@ button, input, textarea, select {
 .section {
   padding-top: 96px;
   padding-bottom: 96px;
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.section-alt {
+  background-color: var(--bg-secondary);
 }
 
 .section-header {
@@ -163,17 +165,17 @@ button, input, textarea, select {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--gold-light);
-  background: var(--gold-bg);
+  color: var(--blue-primary);
+  background: var(--blue-bg);
   padding: 4px 14px;
   border-radius: var(--radius-full);
   margin-bottom: 14px;
-  border: 1px solid var(--gold-border);
+  border: 1px solid var(--blue-border);
 }
 
 .section-title {
   font-size: 2.25rem;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.25;
   letter-spacing: -0.02em;
   color: var(--text-primary);
@@ -187,19 +189,20 @@ button, input, textarea, select {
 }
 
 /* --------------------------------------------------------------------------
-   3. Navigation Bar (Sticky, Royal Frosted Glass)
+   3. Navigation Bar (Sticky, Clean Frosted Glass)
    -------------------------------------------------------------------------- */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 1000;
   height: var(--header-height);
-  background: rgba(7, 12, 26, 0.88);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   align-items: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 .navbar {
@@ -217,19 +220,19 @@ button, input, textarea, select {
 
 .brand-name {
   font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   color: var(--text-primary);
 }
 
 .brand-badge {
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--gold-light);
-  background: var(--gold-bg);
+  color: var(--blue-primary);
+  background: var(--blue-bg);
   padding: 2px 9px;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--gold-border);
+  border: 1px solid var(--blue-border);
 }
 
 .nav-menu {
@@ -247,7 +250,7 @@ button, input, textarea, select {
 }
 
 .nav-link:hover {
-  color: var(--gold-light);
+  color: var(--blue-primary);
 }
 
 .nav-link::after {
@@ -257,7 +260,7 @@ button, input, textarea, select {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: var(--gold-primary);
+  background-color: var(--blue-primary);
   transition: width 0.2s ease;
 }
 
@@ -272,17 +275,16 @@ button, input, textarea, select {
   font-size: 0.875rem;
   font-weight: 600;
   color: #ffffff;
-  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
-  border: 1px solid var(--gold-border);
+  background-color: var(--blue-primary);
   border-radius: var(--radius-sm);
   transition: var(--transition);
-  box-shadow: 0 2px 10px rgba(29, 78, 216, 0.35);
+  box-shadow: var(--shadow-sm);
 }
 
 .nav-cta:hover {
-  border-color: var(--gold-primary);
-  box-shadow: var(--shadow-gold);
+  background-color: var(--blue-hover);
   transform: translateY(-1px);
+  box-shadow: var(--shadow-blue);
 }
 
 /* Mobile Nav Toggle */
@@ -297,7 +299,7 @@ button, input, textarea, select {
 }
 
 /* --------------------------------------------------------------------------
-   4. Buttons & Badges (Royal Blue & Gold Styling)
+   4. Buttons & Badges (White-Blue Styling)
    -------------------------------------------------------------------------- */
 .btn {
   display: inline-flex;
@@ -314,40 +316,42 @@ button, input, textarea, select {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+  background-color: var(--blue-primary);
   color: #ffffff;
-  border: 1px solid var(--gold-border);
+  border: 1px solid var(--blue-primary);
 }
 
 .btn-primary:hover {
-  border-color: var(--gold-primary);
+  background-color: var(--blue-hover);
+  border-color: var(--blue-hover);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-gold);
+  box-shadow: var(--shadow-blue);
 }
 
 .btn-secondary {
   background-color: var(--bg-card);
   color: var(--text-primary);
-  border-color: var(--border-color);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-secondary:hover {
-  background-color: var(--bg-card-hover);
-  border-color: var(--gold-primary);
-  color: var(--gold-light);
+  background-color: var(--blue-bg);
+  border-color: var(--blue-primary);
+  color: var(--blue-primary);
   transform: translateY(-2px);
 }
 
 .btn-outline {
   background-color: transparent;
   color: var(--text-secondary);
-  border-color: var(--border-color);
+  border: 1px solid var(--border-color);
 }
 
 .btn-outline:hover {
-  color: var(--gold-light);
-  border-color: var(--gold-border);
-  background-color: var(--gold-bg);
+  color: var(--blue-primary);
+  border-color: var(--blue-primary);
+  background-color: var(--blue-bg);
 }
 
 .btn-sm {
@@ -361,7 +365,7 @@ button, input, textarea, select {
 .hero-section {
   padding-top: 100px;
   padding-bottom: 100px;
-  background: radial-gradient(circle at 85% 20%, rgba(29, 78, 216, 0.12) 0%, transparent 60%);
+  background: radial-gradient(circle at 85% 20%, rgba(0, 102, 255, 0.05) 0%, transparent 60%);
 }
 
 .hero-grid {
@@ -383,11 +387,11 @@ button, input, textarea, select {
   align-self: flex-start;
   padding: 6px 14px;
   background-color: var(--success-bg);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  border: 1px solid var(--success-border);
   border-radius: var(--radius-full);
   font-size: 0.8125rem;
-  font-weight: 500;
-  color: #34d399;
+  font-weight: 600;
+  color: var(--success-color);
   margin-bottom: 24px;
 }
 
@@ -402,21 +406,21 @@ button, input, textarea, select {
 @keyframes pulseDot {
   0% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.5);
   }
   70% {
     transform: scale(1);
-    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+    box-shadow: 0 0 0 6px rgba(5, 150, 105, 0);
   }
   100% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    box-shadow: 0 0 0 0 rgba(5, 150, 105, 0);
   }
 }
 
 .hero-title {
   font-size: 3.25rem;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: -0.03em;
   line-height: 1.15;
   color: var(--text-primary);
@@ -425,8 +429,8 @@ button, input, textarea, select {
 
 .hero-role {
   font-size: 1.375rem;
-  font-weight: 600;
-  color: var(--gold-light);
+  font-weight: 700;
+  color: var(--blue-primary);
   margin-bottom: 20px;
 }
 
@@ -481,8 +485,8 @@ button, input, textarea, select {
 }
 
 .profile-card:hover {
-  border-color: var(--gold-primary);
-  box-shadow: var(--shadow-gold);
+  border-color: var(--blue-primary);
+  box-shadow: 0 12px 28px -6px rgba(0, 102, 255, 0.16);
   transform: translateY(-4px);
 }
 
@@ -491,8 +495,8 @@ button, input, textarea, select {
   aspect-ratio: 1 / 1;
   border-radius: var(--radius-md);
   overflow: hidden;
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-light);
+  background-color: #f1f5f9;
+  border: 1px solid var(--border-color);
   margin-bottom: 16px;
 }
 
@@ -568,7 +572,7 @@ button, input, textarea, select {
 .about-card-title {
   font-size: 1.125rem;
   font-weight: 700;
-  color: var(--gold-light);
+  color: var(--blue-primary);
   margin-bottom: 20px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--border-color);
@@ -596,7 +600,7 @@ button, input, textarea, select {
 
 .about-info-val {
   font-size: 0.9375rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-primary);
 }
 
@@ -616,13 +620,14 @@ button, input, textarea, select {
   padding: 24px;
   display: flex;
   flex-direction: column;
+  box-shadow: var(--shadow-sm);
   transition: var(--transition);
 }
 
 .skill-category-card:hover {
-  border-color: var(--gold-primary);
+  border-color: var(--blue-primary);
   transform: translateY(-4px);
-  box-shadow: var(--shadow-gold);
+  box-shadow: var(--shadow-lg);
 }
 
 .skill-category-header {
@@ -634,7 +639,7 @@ button, input, textarea, select {
 
 .skill-icon {
   font-size: 1.375rem;
-  color: var(--gold-light);
+  color: var(--blue-primary);
 }
 
 .skill-category-title {
@@ -662,8 +667,9 @@ button, input, textarea, select {
 }
 
 .skill-category-card:hover .skill-tag {
-  border-color: var(--gold-border);
-  color: var(--gold-light);
+  border-color: var(--blue-border);
+  color: var(--blue-primary);
+  background-color: var(--blue-bg);
 }
 
 /* --------------------------------------------------------------------------
@@ -682,20 +688,21 @@ button, input, textarea, select {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  box-shadow: var(--shadow-md);
   transition: var(--transition);
 }
 
 .project-card:hover {
-  border-color: var(--gold-primary);
+  border-color: var(--blue-primary);
   transform: translateY(-6px);
-  box-shadow: var(--shadow-gold);
+  box-shadow: var(--shadow-lg);
 }
 
 .project-thumb {
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background-color: var(--bg-secondary);
+  background-color: #f1f5f9;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -741,10 +748,10 @@ button, input, textarea, select {
 
 .project-tag {
   font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--gold-light);
-  background-color: var(--gold-bg);
-  border: 1px solid var(--gold-border);
+  font-weight: 600;
+  color: var(--blue-primary);
+  background-color: var(--blue-bg);
+  border: 1px solid var(--blue-border);
   padding: 3px 8px;
   border-radius: var(--radius-sm);
 }
@@ -772,13 +779,14 @@ button, input, textarea, select {
   padding: 32px;
   display: flex;
   flex-direction: column;
+  box-shadow: var(--shadow-md);
   transition: var(--transition);
 }
 
 .assignment-card:hover {
-  border-color: var(--gold-primary);
+  border-color: var(--blue-primary);
   transform: translateY(-4px);
-  box-shadow: var(--shadow-gold);
+  box-shadow: var(--shadow-lg);
 }
 
 .assignment-top-meta {
@@ -793,17 +801,17 @@ button, input, textarea, select {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--gold-light);
-  background: var(--gold-bg);
+  color: var(--blue-primary);
+  background: var(--blue-bg);
   padding: 3px 10px;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--gold-border);
+  border: 1px solid var(--blue-border);
 }
 
 .assignment-status {
   font-size: 0.75rem;
   font-weight: 600;
-  color: #34d399;
+  color: var(--success-color);
 }
 
 .assignment-title {
@@ -828,7 +836,7 @@ button, input, textarea, select {
   padding: 14px 16px;
   background-color: var(--bg-secondary);
   border-radius: var(--radius-sm);
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border-color);
 }
 
 .assignment-highlight-item {
@@ -841,7 +849,7 @@ button, input, textarea, select {
 
 .assignment-highlight-item::before {
   content: "•";
-  color: var(--gold-primary);
+  color: var(--blue-primary);
   font-size: 1.1rem;
 }
 
@@ -898,6 +906,7 @@ button, input, textarea, select {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   padding: 24px;
+  box-shadow: var(--shadow-sm);
   transition: var(--transition);
 }
 
@@ -906,8 +915,9 @@ button, input, textarea, select {
 }
 
 .timeline-card:hover {
-  border-color: var(--gold-primary);
+  border-color: var(--blue-primary);
   transform: translateX(4px);
+  box-shadow: var(--shadow-md);
 }
 
 .timeline-marker {
@@ -917,9 +927,9 @@ button, input, textarea, select {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background-color: var(--gold-primary);
-  border: 3px solid var(--bg-primary);
-  box-shadow: 0 0 0 2px var(--gold-primary);
+  background-color: var(--blue-primary);
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 0 2px var(--blue-primary);
 }
 
 .timeline-header {
@@ -938,17 +948,17 @@ button, input, textarea, select {
 
 .timeline-institution {
   font-size: 0.9375rem;
-  font-weight: 500;
-  color: var(--royal-light);
+  font-weight: 600;
+  color: var(--blue-primary);
   margin-top: 2px;
 }
 
 .timeline-badge {
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--gold-light);
-  background-color: var(--gold-bg);
-  border: 1px solid var(--gold-border);
+  color: var(--blue-primary);
+  background-color: var(--blue-bg);
+  border: 1px solid var(--blue-border);
   padding: 4px 10px;
   border-radius: var(--radius-full);
   white-space: nowrap;
@@ -1014,12 +1024,14 @@ button, input, textarea, select {
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
   transition: var(--transition);
 }
 
 .channel-card:hover {
-  border-color: var(--gold-primary);
+  border-color: var(--blue-primary);
   transform: translateX(4px);
+  box-shadow: var(--shadow-md);
 }
 
 .channel-icon {
@@ -1029,10 +1041,10 @@ button, input, textarea, select {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--bg-secondary);
+  background-color: var(--blue-bg);
   border-radius: var(--radius-sm);
-  border: 1px solid var(--border-light);
-  color: var(--gold-light);
+  border: 1px solid var(--blue-border);
+  color: var(--blue-primary);
 }
 
 .channel-details {
@@ -1051,7 +1063,7 @@ button, input, textarea, select {
 
 .channel-value {
   font-size: 0.9375rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-primary);
 }
 
@@ -1105,13 +1117,47 @@ button, input, textarea, select {
 
 .form-control:focus {
   outline: none;
-  border-color: var(--gold-primary);
-  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+  border-color: var(--blue-primary);
+  box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.15);
 }
 
 textarea.form-control {
   min-height: 130px;
   resize: vertical;
+}
+
+/* Form Status Alert (EmailJS Feedback) */
+.form-status {
+  display: none;
+  font-size: 0.875rem;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  margin-top: 14px;
+  line-height: 1.5;
+}
+
+.form-status.loading {
+  background-color: var(--blue-bg);
+  color: var(--blue-primary);
+  border: 1px solid var(--blue-border);
+}
+
+.form-status.success {
+  background-color: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+.form-status.error {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.form-status.info {
+  background-color: var(--blue-bg);
+  color: var(--blue-primary);
+  border: 1px solid var(--blue-border);
 }
 
 /* --------------------------------------------------------------------------
@@ -1121,7 +1167,7 @@ textarea.form-control {
   padding-top: 56px;
   padding-bottom: 56px;
   background-color: var(--bg-secondary);
-  border-top: 1px solid var(--border-light);
+  border-top: 1px solid var(--border-color);
 }
 
 .footer-top {
@@ -1137,7 +1183,7 @@ textarea.form-control {
 
 .footer-brand-title {
   font-size: 1.125rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-primary);
 }
 
@@ -1156,7 +1202,7 @@ textarea.form-control {
 }
 
 .footer-nav a:hover {
-  color: var(--gold-light);
+  color: var(--blue-primary);
 }
 
 .footer-bottom {
@@ -1167,41 +1213,6 @@ textarea.form-control {
   gap: 16px;
   font-size: 0.8125rem;
   color: var(--text-muted);
-}
-
-
-/* Form Status Alert (EmailJS Feedback) */
-.form-status {
-  display: none;
-  font-size: 0.875rem;
-  padding: 10px 14px;
-  border-radius: var(--radius-sm);
-  margin-top: 14px;
-  line-height: 1.5;
-}
-
-.form-status.loading {
-  background-color: var(--royal-bg);
-  color: var(--text-primary);
-  border: 1px solid var(--royal-light);
-}
-
-.form-status.success {
-  background-color: rgba(16, 185, 129, 0.15);
-  color: #34d399;
-  border: 1px solid rgba(16, 185, 129, 0.4);
-}
-
-.form-status.error {
-  background-color: rgba(239, 68, 68, 0.15);
-  color: #f87171;
-  border: 1px solid rgba(239, 68, 68, 0.4);
-}
-
-.form-status.info {
-  background-color: var(--gold-bg);
-  color: var(--gold-light);
-  border: 1px solid var(--gold-border);
 }
 
 /* --------------------------------------------------------------------------
@@ -1300,7 +1311,7 @@ textarea.form-control {
 <body id="top">
 
   <!-- ====================================================================
-       1. Navigation Bar (Sticky, Royal Frosted Glass)
+       1. Navigation Bar (Sticky, Clean White Frosted Glass)
        ==================================================================== -->
   <header class="site-header">
     <div class="container">
@@ -1326,7 +1337,7 @@ textarea.form-control {
 
   <main>
     <!-- ====================================================================
-         2. Hero Section (Royal Blue & Gold Accents)
+         2. Hero Section (White-Blue Theme)
          ==================================================================== -->
     <section class="section hero-section" id="hero">
       <div class="container">
@@ -1375,7 +1386,7 @@ textarea.form-control {
             </div>
           </div>
 
-          <!-- Right Column: Clean Profile Card -->
+          <!-- Right Column: Profile Card -->
           <div class="hero-visual">
             <div class="profile-card">
               <div class="profile-img-wrap">
@@ -1395,7 +1406,7 @@ textarea.form-control {
                 </div>
                 <div class="profile-detail">
                   <span>Student ID</span>
-                  <span style="color: var(--gold-light);">26BCS10296</span>
+                  <span style="color: var(--blue-primary); font-weight: 700;">26BCS10296</span>
                 </div>
                 <div class="profile-detail">
                   <span>Institution</span>
@@ -1410,9 +1421,9 @@ textarea.form-control {
     </section>
 
     <!-- ====================================================================
-         3. About Section
+         3. About Section (Section Alt Background)
          ==================================================================== -->
-    <section class="section" id="about">
+    <section class="section section-alt" id="about">
       <div class="container">
         
         <div class="section-header">
@@ -1452,7 +1463,7 @@ textarea.form-control {
               </div>
               <div class="about-info-row">
                 <span class="about-info-label">Student ID</span>
-                <span class="about-info-val" style="color: var(--gold-light); font-weight: 600;">26BCS10296</span>
+                <span class="about-info-val" style="color: var(--blue-primary); font-weight: 700;">26BCS10296</span>
               </div>
               <div class="about-info-row">
                 <span class="about-info-label">Degree</span>
@@ -1472,7 +1483,7 @@ textarea.form-control {
               </div>
               <div class="about-info-row">
                 <span class="about-info-label">GitHub</span>
-                <span class="about-info-val"><a href="https://github.com/Yahoshuva138" target="_blank" rel="noopener noreferrer" style="color: var(--gold-light);">github.com/Yahoshuva138 ↗</a></span>
+                <span class="about-info-val"><a href="https://github.com/Yahoshuva138" target="_blank" rel="noopener noreferrer" style="color: var(--blue-primary);">github.com/Yahoshuva138 ↗</a></span>
               </div>
             </div>
           </div>
@@ -1577,9 +1588,9 @@ textarea.form-control {
     </section>
 
     <!-- ====================================================================
-         5. Projects Section
+         5. Projects Section (Section Alt Background)
          ==================================================================== -->
-    <section class="section" id="projects">
+    <section class="section section-alt" id="projects">
       <div class="container">
         
         <div class="section-header">
@@ -1754,7 +1765,7 @@ textarea.form-control {
             <h3 class="assignment-title">Flexbox Quest Interactive Arena</h3>
             
             <p class="assignment-desc">
-              An interactive 2D web page built to demonstrate the CSS display model differences (<code style="color: var(--gold-light);">block</code>, <code style="color: var(--gold-light);">inline</code>, <code style="color: var(--gold-light);">inline-block</code>, and <code style="color: var(--gold-light);">flex</code>). Includes directional controls, inventory grid, and quest progress tracking.
+              An interactive 2D web page built to demonstrate the CSS display model differences (<code style="color: var(--blue-primary); font-weight: 600;">block</code>, <code style="color: var(--blue-primary); font-weight: 600;">inline</code>, <code style="color: var(--blue-primary); font-weight: 600;">inline-block</code>, and <code style="color: var(--blue-primary); font-weight: 600;">flex</code>). Includes directional controls, inventory grid, and quest progress tracking.
             </p>
 
             <ul class="assignment-highlights">
@@ -1784,9 +1795,9 @@ textarea.form-control {
     </section>
 
     <!-- ====================================================================
-         7. Education & Experience Timeline
+         7. Education & Experience Timeline (Section Alt Background)
          ==================================================================== -->
-    <section class="section" id="experience">
+    <section class="section section-alt" id="experience">
       <div class="container">
         
         <div class="section-header">
@@ -1815,7 +1826,7 @@ textarea.form-control {
               and Mathematics for Programming.
             </p>
             <div class="timeline-skills">
-              <span class="tag" style="border-color: var(--gold-primary); color: var(--gold-light); background: var(--gold-bg);">Student ID: 26BCS10296</span>
+              <span class="tag" style="border-color: var(--blue-border); color: var(--blue-primary); background: var(--blue-bg); font-weight: 600;">Student ID: 26BCS10296</span>
               <span class="tag">DSA in Java</span>
               <span class="tag">Web Development 101</span>
               <span class="tag">Maths for Programming</span>
@@ -2017,28 +2028,20 @@ textarea.form-control {
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 Kesaboyina Yahoshuva. Built with semantic HTML5 and clean CSS3 (Royal Blue &amp; Gold Edition).</p>
-        <a href="#top" style="color: var(--gold-light); font-weight: 500;">Back to top &uarr;</a>
+        <p>&copy; 2026 Kesaboyina Yahoshuva. Built with semantic HTML5 and clean CSS3 (White-Blue Edition).</p>
+        <a href="#top" style="color: var(--blue-primary); font-weight: 600;">Back to top &uarr;</a>
       </div>
     </div>
   </footer>
 
-
-    <!-- EmailJS Official Browser SDK (v4) -->
+  <!-- EmailJS Official Browser SDK (v4) -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script type="text/javascript">
     (function() {
-      // =====================================================================
-      // Step 1: Dashboard Configuration
-      // 1. Email Service ID: Email Services -> Add New Service (e.g. Gmail) -> Copy Service ID
-      // 2. Email Template ID: Email Templates -> Create Template (variables: {{user_name}}, {{user_email}}, {{subject}}, {{message}}) -> Copy Template ID
-      // 3. Public Key: Account -> General -> Copy Public Key
-      // =====================================================================
       const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
       const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
       const EMAILJS_TEMPLATE_ID = "template_q1xlr9l";
 
-      // Initialize with your Public Key
       if (typeof emailjs !== 'undefined' && EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
         emailjs.init({
           publicKey: EMAILJS_PUBLIC_KEY,
@@ -2073,8 +2076,6 @@ textarea.form-control {
             submitBtn.innerHTML = '<span>Sending...</span> <span aria-hidden="true">⏳</span>';
             showStatus('Sending your message via EmailJS...', 'loading');
 
-            // sendForm automatically collects input fields matching template variables:
-            // {{user_name}}, {{user_email}}, {{subject}}, {{message}}
             emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, this)
               .then(function(response) {
                 console.log('SUCCESS! Email sent.', response.status, response.text);
@@ -2091,20 +2092,15 @@ textarea.form-control {
                 submitBtn.innerHTML = originalBtnHtml;
                 showStatus('FAILED... ' + (error.text || JSON.stringify(error)) + ' — Opening email client fallback...', 'error');
                 setTimeout(function() {
-                  window.location.href = `mailto:kesaboyinayahoshuva@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Inquiry')}&body=${encodeURIComponent('From: ' + name + ' (' + email + ')
-
-' + message)}`;
+                  window.location.href = 'mailto:kesaboyinayahoshuva@gmail.com?subject=' + encodeURIComponent(subject || 'Portfolio Inquiry') + '&body=' + encodeURIComponent('From: ' + name + ' (' + email + ')\n\n' + message);
                 }, 1200);
               });
           } else {
-            // Keys not yet entered: Provide guidance & graceful mailto launch
             showStatus('Preparing transmission to kesaboyinayahoshuva@gmail.com...', 'info');
             submitBtn.disabled = true;
             setTimeout(function() {
               submitBtn.disabled = false;
-              window.location.href = `mailto:kesaboyinayahoshuva@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Inquiry from ' + name)}&body=${encodeURIComponent('From: ' + name + ' (' + email + ')
-
-' + message)}`;
+              window.location.href = 'mailto:kesaboyinayahoshuva@gmail.com?subject=' + encodeURIComponent(subject || ('Portfolio Inquiry from ' + name)) + '&body=' + encodeURIComponent('From: ' + name + ' (' + email + ')\n\n' + message);
               showStatus('Email client launched! (Tip: Set your EmailJS keys in the script to send directly without leaving the page).', 'success');
             }, 700);
           }
@@ -2119,5 +2115,6 @@ textarea.form-control {
       }
     })();
   </script>
+
 </body>
 </html>
