@@ -165,9 +165,32 @@ Use this section to understand and defend every architectural choice made in thi
 
 ---
 
+## 📬 Direct Contact Form & EmailJS Integration
+
+The contact section includes integration with **EmailJS** (`@emailjs/browser` v4 SDK) allowing visitors to send messages directly from the browser to `kesaboyinayahoshuva@gmail.com` with real-time feedback (loading states, success notifications, error handling):
+
+### Quick 3-Step Setup for Live Key Activation:
+1. Create a free account at [emailjs.com](https://www.emailjs.com/).
+2. Add an Email Service (e.g. Gmail linked to `kesaboyinayahoshuva@gmail.com`) &rarr; obtain your **`SERVICE_ID`**.
+3. Create an Email Template &rarr; obtain your **`TEMPLATE_ID`**.
+4. Under Account > API Keys &rarr; copy your **`PUBLIC_KEY`**.
+5. Paste your keys into the configuration block in [`index.html`](index.html) and [`tailwind.html`](tailwind.html):
+   ```javascript
+   const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+   const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
+   const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+   ```
+
+> [!NOTE]
+> A fail-safe `mailto:` fallback is built-in. If keys are not yet configured or if an API connection fails, the form automatically offers to launch the visitor's mail client with pre-filled fields so no messages are ever lost!
+
+---
+
 ## 🏆 Checklist for Submission
 
 - [x] Clean, official, and professional developer presentation (no gimmicks)
+- [x] Royal Blue & Gold majestic color palette applied
+- [x] EmailJS client-side transmission with fallback implemented
 - [x] Authentic student bio with Student ID: `26BCS10296`
 - [x] Official contact email: `kesaboyinayahoshuva@gmail.com`
 - [x] Scaler School of Technology (2025–2029) academic details

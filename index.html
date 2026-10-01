@@ -1169,6 +1169,41 @@ textarea.form-control {
   color: var(--text-muted);
 }
 
+
+/* Form Status Alert (EmailJS Feedback) */
+.form-status {
+  display: none;
+  font-size: 0.875rem;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  margin-top: 14px;
+  line-height: 1.5;
+}
+
+.form-status.loading {
+  background-color: var(--royal-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--royal-light);
+}
+
+.form-status.success {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.form-status.error {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.form-status.info {
+  background-color: var(--gold-bg);
+  color: var(--gold-light);
+  border: 1px solid var(--gold-border);
+}
+
 /* --------------------------------------------------------------------------
    13. Responsive Breakpoints
    -------------------------------------------------------------------------- */
@@ -1897,7 +1932,7 @@ textarea.form-control {
 
           <!-- Right: Functional Form -->
           <div class="contact-form-panel">
-            <form class="contact-form" action="mailto:kesaboyinayahoshuva@gmail.com" method="POST" enctype="text/plain">
+            <form class="contact-form" id="contactForm" action="mailto:kesaboyinayahoshuva@gmail.com" method="POST" enctype="text/plain">
               <div class="form-row">
                 <div class="form-group">
                   <label for="userName" class="form-label">Your Name <span class="required-star">*</span></label>
@@ -1945,10 +1980,11 @@ textarea.form-control {
                 ></textarea>
               </div>
 
-              <button type="submit" class="btn btn-primary" style="align-self: flex-start; padding: 12px 28px;">
+              <button type="submit" id="submitBtn" class="btn btn-primary" style="align-self: flex-start; padding: 12px 28px;">
                 <span>Send Message</span>
                 <span aria-hidden="true">&rarr;</span>
               </button>
+              <div id="formStatus" class="form-status" aria-live="polite"></div>
             </form>
           </div>
 
@@ -1986,6 +2022,103 @@ textarea.form-control {
       </div>
     </div>
   </footer>
+
+
+  <!-- EmailJS Official Browser SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    (function() {
+      // ---------------------------------------------------------------------
+      // EmailJS Configuration
+      // Replace with your keys from https://dashboard.emailjs.com/
+      // ---------------------------------------------------------------------
+      const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";   // e.g. "AbCdEfG123456"
+      const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";   // e.g. "service_gmail"
+      const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID"; // e.g. "template_contact"
+
+      // Initialize EmailJS if public key is configured
+      if (typeof emailjs !== 'undefined' && EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+      }
+
+      const form = document.getElementById('contactForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const formStatus = document.getElementById('formStatus');
+
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+
+          const name = document.getElementById('userName').value.trim();
+          const email = document.getElementById('userEmail').value.trim();
+          const subject = document.getElementById('subject').value.trim();
+          const message = document.getElementById('userMessage').value.trim();
+
+          if (!name || !email || !message) {
+            showStatus('Please fill in all required fields.', 'error');
+            return;
+          }
+
+          const isConfigured = EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY' &&
+                               EMAILJS_SERVICE_ID && EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID' &&
+                               EMAILJS_TEMPLATE_ID && EMAILJS_TEMPLATE_ID !== 'YOUR_TEMPLATE_ID';
+
+          if (isConfigured) {
+            // Send via EmailJS API
+            submitBtn.disabled = true;
+            const originalBtnHtml = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span>Sending transmission...</span> <span aria-hidden="true">⏳</span>';
+            showStatus('Sending your message via EmailJS...', 'loading');
+
+            const templateParams = {
+              from_name: name,
+              from_email: email,
+              reply_to: email,
+              subject: subject || 'Portfolio Contact Inquiry',
+              message: message,
+              to_name: 'Yahoshuva'
+            };
+
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+              .then(function(response) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<span>Message Sent Successfully! ✓</span>';
+                showStatus('Thank you! Your message has been sent directly to Yahoshuva.', 'success');
+                form.reset();
+                setTimeout(function() {
+                  submitBtn.innerHTML = originalBtnHtml;
+                }, 4000);
+              })
+              .catch(function(error) {
+                console.error('EmailJS transmission failed:', error);
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHtml;
+                showStatus('EmailJS error. Opening email client fallback...', 'error');
+                setTimeout(function() {
+                  window.location.href = `mailto:kesaboyinayahoshuva@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Inquiry')}&body=${encodeURIComponent('From: ' + name + ' (' + email + ')\n\n' + message)}`;
+                }, 1200);
+              });
+          } else {
+            // Keys placeholder: Graceful mailto fallback with clear user instruction
+            showStatus('Preparing transmission to kesaboyinayahoshuva@gmail.com...', 'info');
+            submitBtn.disabled = true;
+            setTimeout(function() {
+              submitBtn.disabled = false;
+              window.location.href = `mailto:kesaboyinayahoshuva@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Inquiry from ' + name)}&body=${encodeURIComponent('From: ' + name + ' (' + email + ')\n\n' + message)}`;
+              showStatus('Email client launched! (Tip: Set your EmailJS keys in the script to send silently in the background).', 'success');
+            }, 700);
+          }
+        });
+      }
+
+      function showStatus(text, type) {
+        if (!formStatus) return;
+        formStatus.textContent = text;
+        formStatus.className = 'form-status ' + type;
+        formStatus.style.display = 'block';
+      }
+    })();
+  </script>
 
 </body>
 </html>

@@ -614,31 +614,32 @@
 
           <!-- Right: Contact Form -->
           <div class="lg:col-span-7 bg-[#121c3b] border border-[#1e2e56] rounded-xl p-8 shadow-lg">
-            <form action="mailto:kesaboyinayahoshuva@gmail.com" method="POST" enctype="text/plain" class="space-y-5">
+            <form id="contactForm" action="mailto:kesaboyinayahoshuva@gmail.com" method="POST" enctype="text/plain" class="space-y-5">
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label for="twName" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Your Name *</label>
-                  <input type="text" id="twName" name="name" required class="w-full px-3.5 py-2.5 rounded bg-[#091024] border border-[#1e2e56] focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] text-sm text-white placeholder-slate-500 outline-none" placeholder="e.g. Alex Sharma">
+                  <label for="userName" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Your Name *</label>
+                  <input type="text" id="userName" name="name" required class="w-full px-3.5 py-2.5 rounded bg-[#091024] border border-[#1e2e56] focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] text-sm text-white placeholder-slate-500 outline-none" placeholder="e.g. Alex Sharma">
                 </div>
                 <div>
-                  <label for="twEmail" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Your Email *</label>
-                  <input type="email" id="twEmail" name="email" required class="w-full px-3.5 py-2.5 rounded bg-[#091024] border border-[#1e2e56] focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] text-sm text-white placeholder-slate-500 outline-none" placeholder="alex@example.com">
+                  <label for="userEmail" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Your Email *</label>
+                  <input type="email" id="userEmail" name="email" required class="w-full px-3.5 py-2.5 rounded bg-[#091024] border border-[#1e2e56] focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] text-sm text-white placeholder-slate-500 outline-none" placeholder="alex@example.com">
                 </div>
               </div>
 
               <div>
-                <label for="twSubject" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Subject</label>
-                <input type="text" id="twSubject" name="subject" class="w-full px-3.5 py-2.5 rounded bg-[#091024] border border-[#1e2e56] focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] text-sm text-white placeholder-slate-500 outline-none" placeholder="Internship / Collaboration / Inquiry">
+                <label for="subject" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Subject</label>
+                <input type="text" id="subject" name="subject" class="w-full px-3.5 py-2.5 rounded bg-[#091024] border border-[#1e2e56] focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] text-sm text-white placeholder-slate-500 outline-none" placeholder="Internship / Collaboration / Inquiry">
               </div>
 
               <div>
-                <label for="twMessage" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Message *</label>
-                <textarea id="twMessage" name="message" rows="4" required class="w-full px-3.5 py-2.5 rounded bg-[#091024] border border-[#1e2e56] focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] text-sm text-white placeholder-slate-500 outline-none resize-y" placeholder="Write your message here..."></textarea>
+                <label for="userMessage" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Message *</label>
+                <textarea id="userMessage" name="message" rows="4" required class="w-full px-3.5 py-2.5 rounded bg-[#091024] border border-[#1e2e56] focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] text-sm text-white placeholder-slate-500 outline-none resize-y" placeholder="Write your message here..."></textarea>
               </div>
 
-              <button type="submit" class="px-6 py-2.5 rounded bg-gradient-to-r from-blue-700 to-blue-600 hover:from-blue-800 hover:to-blue-700 text-white font-semibold text-sm border border-[#d4af37]/40 hover:border-[#d4af37] transition-all shadow-[0_4px_16px_rgba(212,175,55,0.22)]">
+              <button type="submit" id="submitBtn" class="px-6 py-2.5 rounded bg-gradient-to-r from-blue-700 to-blue-600 hover:from-blue-800 hover:to-blue-700 text-white font-semibold text-sm border border-[#d4af37]/40 hover:border-[#d4af37] transition-all shadow-[0_4px_16px_rgba(212,175,55,0.22)]">
                 Send Message &rarr;
               </button>
+              <div id="formStatus" class="hidden text-xs px-3.5 py-2.5 rounded mt-3 leading-relaxed" aria-live="polite"></div>
             </form>
           </div>
 
@@ -676,6 +677,105 @@
       </div>
     </div>
   </footer>
+
+
+  <!-- EmailJS Official Browser SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    (function() {
+      const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+      const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
+      const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+
+      if (typeof emailjs !== 'undefined' && EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+      }
+
+      const form = document.getElementById('contactForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const formStatus = document.getElementById('formStatus');
+
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+
+          const name = document.getElementById('userName').value.trim();
+          const email = document.getElementById('userEmail').value.trim();
+          const subject = document.getElementById('subject').value.trim();
+          const message = document.getElementById('userMessage').value.trim();
+
+          if (!name || !email || !message) {
+            showStatus('Please fill in all required fields.', 'error');
+            return;
+          }
+
+          const isConfigured = EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY' &&
+                               EMAILJS_SERVICE_ID && EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID' &&
+                               EMAILJS_TEMPLATE_ID && EMAILJS_TEMPLATE_ID !== 'YOUR_TEMPLATE_ID';
+
+          if (isConfigured) {
+            submitBtn.disabled = true;
+            const originalBtnHtml = submitBtn.innerHTML;
+            submitBtn.innerHTML = 'Sending... ⏳';
+            showStatus('Sending your message via EmailJS...', 'loading');
+
+            const templateParams = {
+              from_name: name,
+              from_email: email,
+              reply_to: email,
+              subject: subject || 'Portfolio Contact Inquiry',
+              message: message,
+              to_name: 'Yahoshuva'
+            };
+
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+              .then(function(response) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Message Sent Successfully! ✓';
+                showStatus('Thank you! Your message has been sent directly to Yahoshuva.', 'success');
+                form.reset();
+                setTimeout(function() {
+                  submitBtn.innerHTML = originalBtnHtml;
+                }, 4000);
+              })
+              .catch(function(error) {
+                console.error('EmailJS error:', error);
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHtml;
+                showStatus('EmailJS error. Opening email client fallback...', 'error');
+                setTimeout(function() {
+                  window.location.href = `mailto:kesaboyinayahoshuva@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Inquiry')}&body=${encodeURIComponent('From: ' + name + ' (' + email + ')\n\n' + message)}`;
+                }, 1200);
+              });
+          } else {
+            showStatus('Preparing transmission to kesaboyinayahoshuva@gmail.com...', 'info');
+            submitBtn.disabled = true;
+            setTimeout(function() {
+              submitBtn.disabled = false;
+              window.location.href = `mailto:kesaboyinayahoshuva@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Inquiry from ' + name)}&body=${encodeURIComponent('From: ' + name + ' (' + email + ')\n\n' + message)}`;
+              showStatus('Email client launched! (Tip: Set your EmailJS keys in the script to send silently in the background).', 'success');
+            }, 700);
+          }
+        });
+      }
+
+      function showStatus(text, type) {
+        if (!formStatus) return;
+        formStatus.textContent = text;
+        formStatus.className = 'text-xs px-3.5 py-2.5 rounded mt-3 leading-relaxed border ';
+        if (type === 'loading') {
+          formStatus.className += 'bg-blue-900/30 text-blue-200 border-blue-500/40';
+        } else if (type === 'success') {
+          formStatus.className += 'bg-emerald-900/30 text-emerald-300 border-emerald-500/40';
+        } else if (type === 'error') {
+          formStatus.className += 'bg-red-900/30 text-red-300 border-red-500/40';
+        } else if (type === 'info') {
+          formStatus.className += 'bg-[#d4af37]/15 text-[#f3cf65] border-[#d4af37]/40';
+        }
+        formStatus.classList.remove('hidden');
+      }
+    })();
+  </script>
 
 </body>
 </html>

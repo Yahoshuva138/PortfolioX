@@ -1155,6 +1155,41 @@ textarea.form-control {
   color: var(--text-muted);
 }
 
+
+/* Form Status Alert (EmailJS Feedback) */
+.form-status {
+  display: none;
+  font-size: 0.875rem;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  margin-top: 14px;
+  line-height: 1.5;
+}
+
+.form-status.loading {
+  background-color: var(--royal-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--royal-light);
+}
+
+.form-status.success {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.form-status.error {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.form-status.info {
+  background-color: var(--gold-bg);
+  color: var(--gold-light);
+  border: 1px solid var(--gold-border);
+}
+
 /* --------------------------------------------------------------------------
    13. Responsive Breakpoints
    -------------------------------------------------------------------------- */
