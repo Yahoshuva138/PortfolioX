@@ -614,15 +614,15 @@
 
           <!-- Right: Contact Form -->
           <div class="lg:col-span-7 bg-[#121c3b] border border-[#1e2e56] rounded-xl p-8 shadow-lg">
-            <form id="contactForm" action="mailto:kesaboyinayahoshuva@gmail.com" method="POST" enctype="text/plain" class="space-y-5">
+            <form id="contact-form" action="mailto:kesaboyinayahoshuva@gmail.com" method="POST" enctype="text/plain" class="space-y-5">
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                   <label for="userName" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Your Name *</label>
-                  <input type="text" id="userName" name="name" required class="w-full px-3.5 py-2.5 rounded bg-[#091024] border border-[#1e2e56] focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] text-sm text-white placeholder-slate-500 outline-none" placeholder="e.g. Alex Sharma">
+                  <input type="text" id="userName" name="user_name" required class="w-full px-3.5 py-2.5 rounded bg-[#091024] border border-[#1e2e56] focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] text-sm text-white placeholder-slate-500 outline-none" placeholder="e.g. Alex Sharma">
                 </div>
                 <div>
                   <label for="userEmail" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Your Email *</label>
-                  <input type="email" id="userEmail" name="email" required class="w-full px-3.5 py-2.5 rounded bg-[#091024] border border-[#1e2e56] focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] text-sm text-white placeholder-slate-500 outline-none" placeholder="alex@example.com">
+                  <input type="email" id="userEmail" name="user_email" required class="w-full px-3.5 py-2.5 rounded bg-[#091024] border border-[#1e2e56] focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] text-sm text-white placeholder-slate-500 outline-none" placeholder="alex@example.com">
                 </div>
               </div>
 
@@ -679,32 +679,34 @@
   </footer>
 
 
-  <!-- EmailJS Official Browser SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script>
+    <!-- EmailJS Official Browser SDK (v4) -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
     (function() {
       const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
       const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
       const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
 
       if (typeof emailjs !== 'undefined' && EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
-        emailjs.init(EMAILJS_PUBLIC_KEY);
+        emailjs.init({
+          publicKey: EMAILJS_PUBLIC_KEY,
+        });
       }
 
-      const form = document.getElementById('contactForm');
+      const form = document.getElementById('contact-form') || document.getElementById('contactForm');
       const submitBtn = document.getElementById('submitBtn');
       const formStatus = document.getElementById('formStatus');
 
       if (form) {
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
 
-          const name = document.getElementById('userName').value.trim();
-          const email = document.getElementById('userEmail').value.trim();
-          const subject = document.getElementById('subject').value.trim();
-          const message = document.getElementById('userMessage').value.trim();
+          const name = (form.querySelector('[name="user_name"]') || {}).value || '';
+          const email = (form.querySelector('[name="user_email"]') || {}).value || '';
+          const subject = (form.querySelector('[name="subject"]') || {}).value || '';
+          const message = (form.querySelector('[name="message"]') || {}).value || '';
 
-          if (!name || !email || !message) {
+          if (!name.trim() || !email.trim() || !message.trim()) {
             showStatus('Please fill in all required fields.', 'error');
             return;
           }
@@ -719,32 +721,25 @@
             submitBtn.innerHTML = 'Sending... ⏳';
             showStatus('Sending your message via EmailJS...', 'loading');
 
-            const templateParams = {
-              from_name: name,
-              from_email: email,
-              reply_to: email,
-              subject: subject || 'Portfolio Contact Inquiry',
-              message: message,
-              to_name: 'Yahoshuva'
-            };
-
-            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+            emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, this)
               .then(function(response) {
+                console.log('SUCCESS! Email sent.', response.status, response.text);
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = 'Message Sent Successfully! ✓';
-                showStatus('Thank you! Your message has been sent directly to Yahoshuva.', 'success');
+                submitBtn.innerHTML = 'SUCCESS! Email Sent ✓';
+                showStatus('SUCCESS! Your message has been sent directly to Yahoshuva.', 'success');
                 form.reset();
                 setTimeout(function() {
                   submitBtn.innerHTML = originalBtnHtml;
                 }, 4000);
-              })
-              .catch(function(error) {
-                console.error('EmailJS error:', error);
+              }, function(error) {
+                console.error('FAILED...', error);
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnHtml;
-                showStatus('EmailJS error. Opening email client fallback...', 'error');
+                showStatus('FAILED... ' + (error.text || JSON.stringify(error)) + ' — Opening email client fallback...', 'error');
                 setTimeout(function() {
-                  window.location.href = `mailto:kesaboyinayahoshuva@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Inquiry')}&body=${encodeURIComponent('From: ' + name + ' (' + email + ')\n\n' + message)}`;
+                  window.location.href = `mailto:kesaboyinayahoshuva@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Inquiry')}&body=${encodeURIComponent('From: ' + name + ' (' + email + ')
+
+' + message)}`;
                 }, 1200);
               });
           } else {
@@ -752,8 +747,10 @@
             submitBtn.disabled = true;
             setTimeout(function() {
               submitBtn.disabled = false;
-              window.location.href = `mailto:kesaboyinayahoshuva@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Inquiry from ' + name)}&body=${encodeURIComponent('From: ' + name + ' (' + email + ')\n\n' + message)}`;
-              showStatus('Email client launched! (Tip: Set your EmailJS keys in the script to send silently in the background).', 'success');
+              window.location.href = `mailto:kesaboyinayahoshuva@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Inquiry from ' + name)}&body=${encodeURIComponent('From: ' + name + ' (' + email + ')
+
+' + message)}`;
+              showStatus('Email client opened! (Tip: Set your EmailJS keys in the script to send directly without leaving the page).', 'success');
             }, 700);
           }
         });
@@ -776,6 +773,5 @@
       }
     })();
   </script>
-
 </body>
 </html>

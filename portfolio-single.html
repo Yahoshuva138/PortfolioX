@@ -1932,14 +1932,14 @@ textarea.form-control {
 
           <!-- Right: Functional Form -->
           <div class="contact-form-panel">
-            <form class="contact-form" id="contactForm" action="mailto:kesaboyinayahoshuva@gmail.com" method="POST" enctype="text/plain">
+            <form class="contact-form" id="contact-form" action="mailto:kesaboyinayahoshuva@gmail.com" method="POST" enctype="text/plain">
               <div class="form-row">
                 <div class="form-group">
                   <label for="userName" class="form-label">Your Name <span class="required-star">*</span></label>
                   <input 
                     type="text" 
                     id="userName" 
-                    name="name" 
+                    name="user_name" 
                     class="form-control" 
                     placeholder="e.g. Alex Sharma" 
                     required
@@ -1950,7 +1950,7 @@ textarea.form-control {
                   <input 
                     type="email" 
                     id="userEmail" 
-                    name="email" 
+                    name="user_email" 
                     class="form-control" 
                     placeholder="alex@example.com" 
                     required
@@ -2024,37 +2024,41 @@ textarea.form-control {
   </footer>
 
 
-  <!-- EmailJS Official Browser SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script>
+    <!-- EmailJS Official Browser SDK (v4) -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
     (function() {
-      // ---------------------------------------------------------------------
-      // EmailJS Configuration
-      // Replace with your keys from https://dashboard.emailjs.com/
-      // ---------------------------------------------------------------------
-      const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";   // e.g. "AbCdEfG123456"
-      const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";   // e.g. "service_gmail"
-      const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID"; // e.g. "template_contact"
+      // =====================================================================
+      // Step 1: Dashboard Configuration
+      // 1. Email Service ID: Email Services -> Add New Service (e.g. Gmail) -> Copy Service ID
+      // 2. Email Template ID: Email Templates -> Create Template (variables: {{user_name}}, {{user_email}}, {{subject}}, {{message}}) -> Copy Template ID
+      // 3. Public Key: Account -> General -> Copy Public Key
+      // =====================================================================
+      const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+      const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
+      const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
 
-      // Initialize EmailJS if public key is configured
+      // Initialize with your Public Key
       if (typeof emailjs !== 'undefined' && EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
-        emailjs.init(EMAILJS_PUBLIC_KEY);
+        emailjs.init({
+          publicKey: EMAILJS_PUBLIC_KEY,
+        });
       }
 
-      const form = document.getElementById('contactForm');
+      const form = document.getElementById('contact-form') || document.getElementById('contactForm');
       const submitBtn = document.getElementById('submitBtn');
       const formStatus = document.getElementById('formStatus');
 
       if (form) {
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
 
-          const name = document.getElementById('userName').value.trim();
-          const email = document.getElementById('userEmail').value.trim();
-          const subject = document.getElementById('subject').value.trim();
-          const message = document.getElementById('userMessage').value.trim();
+          const name = (form.querySelector('[name="user_name"]') || {}).value || '';
+          const email = (form.querySelector('[name="user_email"]') || {}).value || '';
+          const subject = (form.querySelector('[name="subject"]') || {}).value || '';
+          const message = (form.querySelector('[name="message"]') || {}).value || '';
 
-          if (!name || !email || !message) {
+          if (!name.trim() || !email.trim() || !message.trim()) {
             showStatus('Please fill in all required fields.', 'error');
             return;
           }
@@ -2064,48 +2068,44 @@ textarea.form-control {
                                EMAILJS_TEMPLATE_ID && EMAILJS_TEMPLATE_ID !== 'YOUR_TEMPLATE_ID';
 
           if (isConfigured) {
-            // Send via EmailJS API
             submitBtn.disabled = true;
             const originalBtnHtml = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<span>Sending transmission...</span> <span aria-hidden="true">⏳</span>';
+            submitBtn.innerHTML = '<span>Sending...</span> <span aria-hidden="true">⏳</span>';
             showStatus('Sending your message via EmailJS...', 'loading');
 
-            const templateParams = {
-              from_name: name,
-              from_email: email,
-              reply_to: email,
-              subject: subject || 'Portfolio Contact Inquiry',
-              message: message,
-              to_name: 'Yahoshuva'
-            };
-
-            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+            // sendForm automatically collects input fields matching template variables:
+            // {{user_name}}, {{user_email}}, {{subject}}, {{message}}
+            emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, this)
               .then(function(response) {
+                console.log('SUCCESS! Email sent.', response.status, response.text);
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = '<span>Message Sent Successfully! ✓</span>';
-                showStatus('Thank you! Your message has been sent directly to Yahoshuva.', 'success');
+                submitBtn.innerHTML = '<span>SUCCESS! Email Sent ✓</span>';
+                showStatus('SUCCESS! Your message has been sent directly to Yahoshuva.', 'success');
                 form.reset();
                 setTimeout(function() {
                   submitBtn.innerHTML = originalBtnHtml;
                 }, 4000);
-              })
-              .catch(function(error) {
-                console.error('EmailJS transmission failed:', error);
+              }, function(error) {
+                console.error('FAILED...', error);
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnHtml;
-                showStatus('EmailJS error. Opening email client fallback...', 'error');
+                showStatus('FAILED... ' + (error.text || JSON.stringify(error)) + ' — Opening email client fallback...', 'error');
                 setTimeout(function() {
-                  window.location.href = `mailto:kesaboyinayahoshuva@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Inquiry')}&body=${encodeURIComponent('From: ' + name + ' (' + email + ')\n\n' + message)}`;
+                  window.location.href = `mailto:kesaboyinayahoshuva@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Inquiry')}&body=${encodeURIComponent('From: ' + name + ' (' + email + ')
+
+' + message)}`;
                 }, 1200);
               });
           } else {
-            // Keys placeholder: Graceful mailto fallback with clear user instruction
+            // Keys not yet entered: Provide guidance & graceful mailto launch
             showStatus('Preparing transmission to kesaboyinayahoshuva@gmail.com...', 'info');
             submitBtn.disabled = true;
             setTimeout(function() {
               submitBtn.disabled = false;
-              window.location.href = `mailto:kesaboyinayahoshuva@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Inquiry from ' + name)}&body=${encodeURIComponent('From: ' + name + ' (' + email + ')\n\n' + message)}`;
-              showStatus('Email client launched! (Tip: Set your EmailJS keys in the script to send silently in the background).', 'success');
+              window.location.href = `mailto:kesaboyinayahoshuva@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Inquiry from ' + name)}&body=${encodeURIComponent('From: ' + name + ' (' + email + ')
+
+' + message)}`;
+              showStatus('Email client launched! (Tip: Set your EmailJS keys in the script to send directly without leaving the page).', 'success');
             }, 700);
           }
         });
@@ -2119,6 +2119,5 @@ textarea.form-control {
       }
     })();
   </script>
-
 </body>
 </html>
