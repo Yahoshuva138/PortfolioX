@@ -15,7 +15,7 @@
 - **Tailwind CSS Edition (Bonus Point):** [`tailwind.html`](tailwind.html)
 - **Modular Stylesheet Reference:** [`style.css`](style.css)
 - **GitHub Armory:** [github.com/Yahoshuva138](https://github.com/Yahoshuva138)
-- **Summon Player (Email):** [yahoshuva138@gmail.com](mailto:yahoshuva138@gmail.com)
+- **Summon Player (Email):** [kesaboyinayahoshuva@gmail.com](mailto:kesaboyinayahoshuva@gmail.com)
 
 ---
 
